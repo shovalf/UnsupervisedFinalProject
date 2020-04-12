@@ -1,3 +1,7 @@
+"""
+Code to apply labels in several techniques as explained in the pdf file.
+"""
+
 from sklearn.metrics import mutual_info_score
 from plotting_utils import *
 from sklearn.preprocessing import MinMaxScaler
@@ -85,7 +89,7 @@ def main(method, mission):
     :return: Mutual information index as explained above
     """
     # read the data
-    data = pd.read_csv(r"C:\Users\shova\Desktop\CC GENERAL.csv")
+    data = pd.read_csv("CC GENERAL.csv")
     data.loc[(data['MINIMUM_PAYMENTS'].isnull() == True), 'MINIMUM_PAYMENTS'] = data['MINIMUM_PAYMENTS'].median()
     data.loc[(data['CREDIT_LIMIT'].isnull() == True), 'CREDIT_LIMIT'] = data['CREDIT_LIMIT'].median()
     data = data.drop(['CUST_ID'], 1)
@@ -143,7 +147,7 @@ def main(method, mission):
     # check mutual information between random labels and k-means clustering
     random_label = np.random.randint(0, 2, 8950)
     mi_random = mutual_info_score(random_label, kmeans_predict)
-    print("Mutual Information between K-means predictions and random labels is: ", mi_random)
+    print("Mutual Information between K-means predictions and random labels is: ", mi_random, "\n")
 
 
 # here one can choose the dimensionality reduction method (PCA or autoencoder) and the requested labeling method,

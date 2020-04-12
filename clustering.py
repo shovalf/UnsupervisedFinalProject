@@ -34,6 +34,7 @@ def main(points_pca, points_tsne, points_2_dim, X_scaled):
     for i in range(len(points)):
         # silhouette scores for K-means, GMM and Hierarchical Clustering
         print("\n")
+        print(methods[i])
         print("Average silhouette scores for K-means:")
         calculate_and_plot_silhouette_scores(X_scaled, points[i], clustering[0])
         print("\n")
